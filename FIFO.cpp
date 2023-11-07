@@ -2,9 +2,10 @@
 using namespace std;
 
 int main() {
-    int referenceString[25], frames[10], pageFaults = 0, count = 0, n, numFrames;
+    int referenceString[25], frames[10], pageFaults = 0, numFrames;
 
     cout << "Enter the length of the reference string: ";
+    int n;
     cin >> n;
 
     if (n <= 0) {
@@ -29,6 +30,8 @@ int main() {
         frames[i] = -1;
     }
 
+    int count = 0; // Initialize the frame index
+
     cout << "\nPage Replacement Process:\n";
     for (int i = 0; i < n; i++) {
         int page = referenceString[i];
@@ -43,7 +46,7 @@ int main() {
 
         if (!pageFound) {
             frames[count] = page;
-            count = (count + 1) % numFrames;
+            count = (count + 1) % numFrames; // Update the frame index
             pageFaults++;
         }
 
